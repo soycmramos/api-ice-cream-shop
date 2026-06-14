@@ -1,0 +1,42 @@
+{
+  "name": "api-ice-cream-shop",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "tsc": "tsc -w",
+    "dev": "nodemon --env-file=.env ./dist/index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devEngines": {
+    "packageManager": {
+      "name": "pnpm",
+      "version": "^11.5.0",
+      "onFail": "download"
+    }
+  },
+  "type": "module",
+  "devDependencies": {
+    "@types/cors": "^2.8.19",
+    "@types/express": "^5.0.6",
+    "concurrently": "^10.0.3",
+    "nodemon": "^3.1.14",
+    "ts-node": "10.9.2",
+    "typescript": "6.0.3"
+  },
+  "dependencies": {
+    "cors": "2.8.6",
+    "cross-env": "10.1.0",
+    "dotenv": "17.4.2",
+    "express": "5.2.1",
+    "helmet": "8.2.0",
+    "http-status-codes": "2.3.0",
+    "mysql2": "3.22.5",
+    "sequelize": "6.37.8",
+    "sqlite3": "6.0.1",
+    "uuid": "14.0.0",
+    "zod": "4.4.3"
+  }
+}
