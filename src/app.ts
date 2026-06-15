@@ -2,6 +2,7 @@ import express, { Application } from 'express'
 import cors from 'cors'
 import helmet from 'helmet'
 import productRoutes from './presentation/routes/productRoutes.js'
+import tableRoutes from './presentation/routes/tableRoutes.js'
 
 const app: Application = express()
 
@@ -17,5 +18,7 @@ app.use(helmet())
 
 // routes
 app.use('/api/products', productRoutes)
+app.use('/api/tables', tableRoutes)
+
 
 export default app

@@ -13,8 +13,8 @@ export class ProductRepositoryImpl implements IProductRepository {
   }
 
   async findById(id: string): Promise<Product | null> {
-    const [rows] = await pool.query("SELECT * FROM products WHERE id = ?", [id]);
-    const products = rows as Product[];
+    const [rows] = await pool.query("SELECT * FROM products WHERE id = ?", [id])
+    const products = rows as Product[]
     return products[0] ?? null
   }
 

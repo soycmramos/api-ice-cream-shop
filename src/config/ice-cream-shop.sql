@@ -1,7 +1,7 @@
 CREATE TABLE `tables` (
   `id` varchar(36) UNIQUE PRIMARY KEY NOT NULL,
-  `code` varchar(3) UNIQUE NOT NULL,
-  `state` ENUM ('LIBRE', 'OCUPADA', 'RESERVADA'),
+  `number` int UNIQUE NOT NULL,
+  `status` ENUM('LIBRE', 'OCUPADA') NOT NULL DEFAULT 'LIBRE',
   `createdAt` timestamp DEFAULT CURRENT_TIMESTAMP NOT NULL
 );
 
