@@ -22,13 +22,13 @@ export class ProductService {
     return await this.repository.create(newProduct)
   }
 
-  async getById(id: string) {
+  async findById(id: string) {
     const product = await this.repository.findById(id)
     if (!product) throw { status: 404, message: 'Product not found' }
     return product
   }
 
-  async getAll() {
+  async findAll() {
     return await this.repository.findAll()
   }
 

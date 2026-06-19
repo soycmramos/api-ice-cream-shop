@@ -20,13 +20,13 @@ export class TableService {
     return await this.repository.create(newTable)
   }
 
-  async getById(id: string) {
+  async findById(id: string) {
     const table = await this.repository.findById(id)
     if (!table) throw { status: 404, message: 'Table not found' }
     return table
   }
 
-  async getAll() {
+  async findAll() {
     return await this.repository.findAll()
   }
 

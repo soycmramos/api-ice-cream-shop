@@ -14,17 +14,17 @@ export class ProductController {
     }
   }
 
-  static async getById(req: Request, res: Response) {
+  static async findById(req: Request, res: Response) {
     try {
-      const product = await service.getById(String(req.params.id))
+      const product = await service.findById(String(req.params.id))
       res.status(200).json(product)
     } catch (err: any) {
       res.status(err.status || 500).json({ error: err.message })
     }
   }
 
-  static async getAll(req: Request, res: Response) {
-    const products = await service.getAll()
+  static async findAll(req: Request, res: Response) {
+    const products = await service.findAll()
     res.status(200).json(products)
   }
 

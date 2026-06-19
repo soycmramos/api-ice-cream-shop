@@ -16,7 +16,7 @@ export class TableController {
 
   static async findById(req: Request, res: Response) {
     try {
-      const table = await service.getById(String(req.params.id))
+      const table = await service.findById(String(req.params.id))
       res.status(200).json(table)
     } catch (err: any) {
       res.status(err.status || 500).json({ error: err.message })
@@ -24,7 +24,7 @@ export class TableController {
   }
 
   static async findAll(req: Request, res: Response) {
-    const tables = await service.getAll()
+    const tables = await service.findAll()
     res.status(200).json(tables)
   }
 
