@@ -4,7 +4,10 @@ SHOW DATABASES;
 USE icecream_shop;
 SHOW TABLES;
 DESCRIBE orders;
+SELECT * FROM products;
 SELECT * FROM orders;
+SELECT * FROM tables;
+SELECT * FROM orders_products;
 
 SELECT 
 	CONSTRAINT_NAME,
