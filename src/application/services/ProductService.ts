@@ -1,5 +1,7 @@
 
 import { v4 as uuidv4 } from 'uuid'
+import { ReasonPhrases, StatusCodes } from 'http-status-codes'
+import { BusinessException, BusinessExceptionDetail } from '../../domain/entities/BusinessException.js'
 import { IProductRepository } from '../../domain/repositories/IProductRepository.js'
 import { ProductSchema, ProductInput } from '../validators/ProductValidator.js'
 import { Product } from '../../domain/entities/Product.js'
@@ -10,8 +12,20 @@ export class ProductService {
   async create(product: Omit<ProductInput, 'id'>) {
     const parsed = ProductSchema.safeParse(product)
     if (!parsed.success) {
-      throw { status: 400, message: parsed.error.issues }
+      const details: BusinessExceptionDetail[] = parsed.error.issues.map(issue => ({
+        field: issue.path.join('.'),
+        code: issue.code,
+        message: issue.message
+      }))
+
+      throw new BusinessException(StatusCodes.BAD_REQUEST, ReasonPhrases.BAD_REQUEST, details)
     }
+
+    /**
+     * Implementar aquí validación de negocio para consultar
+     * si el producto ya existe según su código y retornar
+     * excepción de tipo 409 Conflict
+     */
 
     const newProduct: Product = {
       id: uuidv4(),

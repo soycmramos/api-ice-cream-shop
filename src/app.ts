@@ -1,6 +1,7 @@
 import express, { Application } from 'express'
 import cors from 'cors'
 import helmet from 'helmet'
+import morgan from 'morgan'
 import productRoutes from './presentation/routes/productRoutes.js'
 import tableRoutes from './presentation/routes/tableRoutes.js'
 import orderRoutes from './presentation/routes/orderRoutes.js'
@@ -9,6 +10,12 @@ import ordersWithProducts from './presentation/routes/orderWithProductsRoutes.js
 
 const app: Application = express()
 
+// CORS
+const corsOptions = {
+  origin: "http://localhost:5173",
+  optionsSuccessStatus: 200,
+}
+
 // settings
 app.set('port', process.env.PORT || 5000)
 app.set('json spaces', 2)
@@ -16,8 +23,9 @@ app.set('json spaces', 2)
 // middlewares
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
-app.use(cors())
+app.use(cors(corsOptions))
 app.use(helmet())
+app.use(morgan('dev'))
 
 // routes
 app.use('/api/products', productRoutes)
